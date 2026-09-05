@@ -1,0 +1,531 @@
+@import "tailwindcss";
+
+/* ─── Brand Colour Tokens ────────────────────────────────────────────────────── */
+:root {
+  /* Primary palette */
+  --terracotta: #C4622D;
+  --terracotta-light: #E07A4F;
+  --terracotta-dark: #9E4D23;
+
+  --deep-green: #2D5016;
+  --deep-green-light: #3D6B1E;
+  --deep-green-dark: #1E3510;
+
+  --mustard: #D4A017;
+  --mustard-light: #E8B92A;
+  --mustard-dark: #A87D12;
+
+  --cobalt: #1B4F8C;
+  --cobalt-light: #2563A8;
+  --cobalt-dark: #123570;
+
+  --coral: #E05A4A;
+  --coral-light: #F07060;
+  --coral-dark: #C04535;
+
+  /* Neutrals */
+  --cream: #FAF6EE;
+  --warm-beige: #F0E8D8;
+  --charcoal: #2C2C2C;
+  --soft-pink: #F5D5CE;
+  --warm-white: #FDFAF6;
+
+  /* Typography */
+  --text-primary: #1A1A1A;
+  --text-secondary: #5C5C5C;
+  --text-muted: #9A9A9A;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-xl: 0 16px 64px rgba(0,0,0,0.14);
+}
+
+@theme inline {
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-light: var(--terracotta-light);
+  --color-terracotta-dark: var(--terracotta-dark);
+  --color-deep-green: var(--deep-green);
+  --color-deep-green-light: var(--deep-green-light);
+  --color-mustard: var(--mustard);
+  --color-cobalt: var(--cobalt);
+  --color-coral: var(--coral);
+  --color-cream: var(--cream);
+  --color-warm-beige: var(--warm-beige);
+  --color-charcoal: var(--charcoal);
+  --color-soft-pink: var(--soft-pink);
+  --color-warm-white: var(--warm-white);
+}
+
+/* ─── Base Resets ────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--warm-white);
+  color: var(--text-primary);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ─── Typography Scale ───────────────────────────────────────────────────────── */
+.font-display {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--terracotta);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terracotta-dark);
+}
+
+/* ─── Focus Ring ─────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--soft-pink);
+  color: var(--charcoal);
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.animate-fade-in-up   { animation: fadeInUp 0.6s ease-out forwards; }
+.animate-fade-in      { animation: fadeIn 0.5s ease-out forwards; }
+.animate-slide-left   { animation: slideInLeft 0.6s ease-out forwards; }
+.animate-scale-in     { animation: scaleIn 0.4s ease-out forwards; }
+.animate-float        { animation: float 3s ease-in-out infinite; }
+
+.animation-delay-100  { animation-delay: 0.1s; }
+.animation-delay-200  { animation-delay: 0.2s; }
+.animation-delay-300  { animation-delay: 0.3s; }
+.animation-delay-400  { animation-delay: 0.4s; }
+.animation-delay-500  { animation-delay: 0.5s; }
+
+/* ─── Skeleton Loader ────────────────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--warm-beige) 25%,
+    var(--cream) 50%,
+    var(--warm-beige) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* ─── Product Card Hover ─────────────────────────────────────────────────────── */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+.product-card:hover .product-card-image {
+  transform: scale(1.05);
+}
+.product-card-image {
+  transition: transform 0.5s ease;
+}
+
+/* ─── Before/After Slider ────────────────────────────────────────────────────── */
+.before-after-container {
+  position: relative;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+}
+.before-after-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: white;
+  z-index: 10;
+  cursor: ew-resize;
+}
+.before-after-handle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  z-index: 11;
+}
+
+/* ─── Image Overlay ──────────────────────────────────────────────────────────── */
+.image-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.image-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 50%,
+    rgba(0,0,0,0.4) 100%
+  );
+  pointer-events: none;
+}
+
+/* ─── Gradient Text ──────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--terracotta) 0%, var(--coral) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Section Divider ────────────────────────────────────────────────────────── */
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--terracotta);
+  margin: 0 auto 24px;
+  border-radius: 2px;
+}
+
+/* ─── Sticky CTA ─────────────────────────────────────────────────────────────── */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 16px;
+  background: white;
+  border-top: 1px solid var(--warm-beige);
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+}
+
+/* ─── WhatsApp Float ─────────────────────────────────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+}
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.4);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* ─── Visualiser Canvas ──────────────────────────────────────────────────────── */
+.visualiser-canvas {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--warm-beige);
+}
+.visualiser-overlay {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.75;
+  pointer-events: none;
+  background-repeat: repeat;
+  background-size: cover;
+  transition: opacity 0.4s ease;
+}
+
+/* ─── Range Input ────────────────────────────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--warm-beige);
+  border-radius: 3px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ─── Form Inputs ────────────────────────────────────────────────────────────── */
+.input-base {
+  width: 100%;
+  padding: 12px 16px;
+  background: white;
+  border: 1.5px solid #E5DDD0;
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--text-primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.input-base:focus {
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 3px rgba(196, 98, 45, 0.12);
+}
+.input-base::placeholder {
+  color: var(--text-muted);
+}
+.input-base.error {
+  border-color: var(--coral);
+}
+
+/* ─── Upload Drop Zone ───────────────────────────────────────────────────────── */
+.upload-zone {
+  border: 2px dashed #D4C4B0;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+.upload-zone:hover,
+.upload-zone.drag-active {
+  border-color: var(--terracotta);
+  background-color: rgba(196, 98, 45, 0.04);
+}
+
+/* ─── Tab Component ──────────────────────────────────────────────────────────── */
+.tab-active {
+  color: var(--terracotta);
+  border-bottom: 2px solid var(--terracotta);
+}
+
+/* ─── Badge ──────────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ─── Price Display ──────────────────────────────────────────────────────────── */
+.price-display {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  color: var(--charcoal);
+}
+.price-from {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ─── Star Rating ────────────────────────────────────────────────────────────── */
+.star-filled { color: var(--mustard); }
+.star-empty  { color: #D4C4B0; }
+
+/* ─── Prose ──────────────────────────────────────────────────────────────────── */
+.prose-brand p {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+.prose-brand h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  margin-top: 28px;
+  color: var(--charcoal);
+}
+
+/* ─── Section Backgrounds ────────────────────────────────────────────────────── */
+.bg-brand-cream    { background-color: var(--cream); }
+.bg-brand-beige    { background-color: var(--warm-beige); }
+.bg-brand-terracotta { background-color: var(--terracotta); }
+.bg-brand-green    { background-color: var(--deep-green); }
+.bg-brand-charcoal { background-color: var(--charcoal); }
+
+/* ─── Aspect Ratios ──────────────────────────────────────────────────────────── */
+.aspect-product   { aspect-ratio: 3 / 4; }
+.aspect-gallery   { aspect-ratio: 4 / 3; }
+.aspect-hero      { aspect-ratio: 16 / 9; }
+.aspect-square    { aspect-ratio: 1 / 1; }
+.aspect-portrait  { aspect-ratio: 2 / 3; }
+
+/* ─── Responsive Container ───────────────────────────────────────────────────── */
+.container-brand {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (max-width: 640px) {
+  .container-brand {
+    padding: 0 16px;
+  }
+}
+
+/* ─── Mobile Nav ─────────────────────────────────────────────────────────────── */
+.mobile-nav-open  { overflow: hidden; }
+
+/* ─── Order Status Badge ─────────────────────────────────────────────────────── */
+.status-order-received     { background: #EEF4FF; color: #3B6FD4; }
+.status-design-review      { background: #FFF7ED; color: #C4622D; }
+.status-production         { background: #FDF4DB; color: #A87D12; }
+.status-ready-dispatch     { background: #F0FDF4; color: #2D5016; }
+.status-out-for-delivery   { background: #F0F9FF; color: #0369A1; }
+.status-installation-scheduled { background: #FDF2F8; color: #9D174D; }
+.status-completed          { background: #F0FDF4; color: #166534; }
+
+/* ─── Admin Sidebar ──────────────────────────────────────────────────────────── */
+.admin-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: rgba(255,255,255,0.75);
+  transition: background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.admin-sidebar-link:hover,
+.admin-sidebar-link.active {
+  background-color: rgba(255,255,255,0.12);
+  color: white;
+}
+
+/* ─── Utilities ──────────────────────────────────────────────────────────────── */
+.text-balance { text-wrap: balance; }
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
