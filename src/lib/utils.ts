@@ -1,3 +1,12 @@
+import { 
+  WallCalculationResult, 
+  WallMeasurement, 
+  ProductMeasurements, 
+  ProductPricing, 
+  CartItemCustomisation, 
+  OrderStatus, 
+  InstallationBookingStatus 
+} from '@/types';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { WallCalculationResult } from '@/types';
