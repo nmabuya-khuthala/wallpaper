@@ -10,9 +10,9 @@ export interface WallCalculationResult {
   coveragePerRoll?: number;
   totalCost?: number;
   breakdown: {
-    totalArea: number;
-    extraAllowance: number;
-    recommendedPanels: number;
+    totalArea?: number;
+    extraAllowance?: number;
+    recommendedPanels?: number;
     [key: string]: any;
   };
 }
