@@ -96,7 +96,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-sm font-sans text-white/70 hover:text-[#C4622D] transition-colors"
               >
                 <Phone size={15} className="shrink-0" />
-                +27 00 000 0000
+                +27 75 999 7912
               </a>
               <span className="flex items-center gap-2 text-sm font-sans text-white/60">
                 <MapPin size={15} className="shrink-0" />
@@ -113,7 +113,7 @@ export default function Footer() {
                 className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C4622D] flex items-center justify-center transition-colors"
                 aria-label="Follow Haosail on Instagram"
               >
-                <Instagram size={16} />
+               
               </a>
               <a
                 href="https://facebook.com/haosail"
@@ -122,7 +122,7 @@ export default function Footer() {
                 className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C4622D] flex items-center justify-center transition-colors"
                 aria-label="Follow Haosail on Facebook"
               >
-                <Facebook size={16} />
+                
               </a>
             </div>
           </div>
