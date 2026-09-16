@@ -1,4 +1,10 @@
 // ─── Product Types ─────────────────────────────────────────────────────────────
+export interface WallCalculationResult {
+  rollsNeeded: number;
+  totalArea: number;
+  coveragePerRoll?: number;
+  totalCost?: number;
+}
 
 export type ProductCategory =
   | 'bespoke-wallpaper'
