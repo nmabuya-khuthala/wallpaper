@@ -103,7 +103,7 @@ Perfect for a statement living room wall, a vibrant dining room, or a bedroom th
     slug: 'little-explorer',
     name: 'Little Explorer',
     description:
-      'Adventure-themed children's wallpaper packed with maps, compasses, hot air balloons and wildlife.',
+      'Adventure-themed childrens wallpaper packed with maps, compasses, hot air balloons and wildlife.',
     longDescription: `Little Explorer turns any child's room into a world of adventure. Featuring hand-illustrated maps, friendly animals, hot air balloons, mountains and secret paths, this design sparks curiosity and creativity.
 
 Printed on child-safe, wipe-clean vinyl for easy maintenance. Available in a warm rainbow palette or our popular muted pastels edition.`,
