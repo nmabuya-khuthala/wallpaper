@@ -22,15 +22,7 @@ export default function HomePage() {
   const reviews = getApprovedReviews();
 
   return (
-    <>
-      {/* Skip to content */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-[#C4622D] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-sans focus:text-sm"
-      >
-        Skip to main content
-      </a>
-
+    <main id="main-content">
       <HeroSection />
       <ShopByExperience />
       <FeaturedProducts products={featuredProducts} />
@@ -39,6 +31,6 @@ export default function HomePage() {
       <InspirationSection images={INSPIRATION_IMAGES.slice(0, 6)} />
       <BeforeAfterSection />
       <ReviewsSection reviews={reviews} />
-    </>
+    </main>
   );
 }
