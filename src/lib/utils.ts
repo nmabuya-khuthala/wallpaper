@@ -9,7 +9,6 @@ import {
 } from '@/types';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { WallCalculationResult } from '@/types';
 // ─── Tailwind Class Utility ──────────────────────────────────────────────────
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
