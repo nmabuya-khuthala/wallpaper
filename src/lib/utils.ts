@@ -9,6 +9,7 @@ import {
 } from '@/types';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+
 // ─── Tailwind Class Utility ──────────────────────────────────────────────────
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -29,22 +30,6 @@ export function formatCurrency(
 }
 
 // ─── Wall Measurement Calculator ─────────────────────────────────────────────
-export interface WallCalculationResult {
-  wallArea: number;            // m²
-  requiredArea: number;        // m² with waste
-  panelsRequired: number;
-  squareMetres: number;
-  estimatedPrice: number;
-  breakdown: {
-    wallWidth: number;
-    wallHeight: number;
-    wasteFactor: number;
-    panelWidth: number;
-    panelHeight: number;
-    pricePerPanel: number;
-  };
-}
-
 export function calculateWallRequirements(
   wall: WallMeasurement,
   measurements: ProductMeasurements,
