@@ -1,11 +1,26 @@
-import type { Metadata } from 'next';
-import OrderConfirmationClient from '@/components/order/OrderConfirmationClient';
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
-export const metadata: Metadata = {
-  title: 'Order Confirmed — Thank You!',
-  description: 'Your Haosail order has been confirmed. We\'re busy preparing your bespoke wallpaper.',
-};
+function ConfirmationContent() {
+  const searchParams = useSearchParams();
+  const orderId = searchParams.get('orderId');
+
+  return (
+    <div>
+      <h1>Order Confirmation</h1>
+      {orderId ? (
+        <p>Thank you for your order! Your reference is: {orderId}</p>
+      ) : (
+        <p>Thank you for your order!</p>
+      )}
+    </div>
+  );
+}
 
 export default function OrderConfirmationPage() {
-  return <OrderConfirmationClient />;
+  return (
+    <Suspense fallback={<div className="container py-12 text-center">Loading confirmation...</div>}>
+      <ConfirmationContent />
+    </Suspense>
+  );
 }
