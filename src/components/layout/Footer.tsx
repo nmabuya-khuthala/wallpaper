@@ -1,13 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  Instagram,
-  Facebook,
-  Mail,
-  Phone,
-  MapPin,
-} from 'lucide-react';
+import { Mail, Phone, MapPin, Share2, Globe } from 'lucide-react';
 
 const FOOTER_LINKS = {
   shop: [
