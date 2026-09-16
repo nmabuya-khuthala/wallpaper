@@ -1,9 +1,20 @@
 // ─── Product Types ─────────────────────────────────────────────────────────────
 export interface WallCalculationResult {
-  rollsNeeded: number;
-  totalArea: number;
+  panelsRequired?: number;
+  squareMetres?: number;
+  estimatedPrice?: number;
+  wallArea?: number;
+  requiredArea?: number;
+  rollsNeeded?: number;
+  totalArea?: number;
   coveragePerRoll?: number;
   totalCost?: number;
+  breakdown?: {
+    totalArea?: number;
+    extraAllowance?: number;
+    recommendedPanels?: number;
+    [key: string]: any;
+  };
 }
 
 export type ProductCategory =
