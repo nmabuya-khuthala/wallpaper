@@ -29,47 +29,6 @@ export function formatCurrency(
   }).format(amount);
 }
 
-// ─── Wall Measurement Calculator ─────────────────────────────────────────────
-export function calculateWallRequirements(
-  wall: WallMeasurement,
-  measurements: ProductMeasurements,
-  pricing: ProductPricing,
-): WallCalculationResult {
-  const wallArea = wall.width * wall.height;
-  const wasteFactor = 1 + measurements.wasteAllowance / 100;
-  const requiredArea = wallArea * wasteFactor;
-
-  // How many panels wide to cover the wall
-  const panelsWide = Math.ceil(wall.width / measurements.panelWidth);
-  // How many panels tall to cover the wall
-  const panelsTall = Math.ceil(wall.height / measurements.panelHeight);
-  const panelsRequired = panelsWide * panelsTall;
-
-  const squareMetres = requiredArea;
-  const estimatedPrice = pricing.pricePerSqm
-    ? squareMetres * pricing.pricePerSqm
-    : panelsRequired * pricing.basePrice;
-
-  return {
-    wallArea: round2(wallArea),
-    requiredArea: round2(requiredArea),
-    panelsRequired,
-    squareMetres: round2(squareMetres),
-    estimatedPrice: Math.round(estimatedPrice),
-    breakdown: {
-      wallWidth: wall.width,
-      wallHeight: wall.height,
-      wasteFactor,
-      panelWidth: measurements.panelWidth,
-      panelHeight: measurements.panelHeight,
-      pricePerPanel: pricing.basePrice,
-    },
-  };
-}
-
-function round2(n: number): number {
-  return Math.round(n * 100) / 100;
-}
 
 // ─── Cart Price Calculator ────────────────────────────────────────────────────
 export function calculateCartItemPrice(
