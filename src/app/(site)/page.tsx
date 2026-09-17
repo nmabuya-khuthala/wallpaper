@@ -1,3 +1,4 @@
+'use client';
 import type { Metadata } from 'next';
 import HeroSection from '@/components/home/HeroSection';
 import ShopByExperience from '@/components/home/ShopByExperience';
