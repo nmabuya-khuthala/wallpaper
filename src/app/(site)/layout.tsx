@@ -1,14 +1,11 @@
-import React from 'react';
-import SiteLayout from '@/components/layout/SiteLayout';
+import type { Metadata } from 'next';
+
 export const metadata: Metadata = {
-  title: 'Khuthala — Make Your Walls Tell Your Story',
+  title: 'Haosail | Make Your Walls Tell Your Story',
   description:
-    'Bespoke wallpaper, statement murals and family portraits. Custom-printed to your exact wall size. Professionally installed across South Africa.',
+    'Bespoke wallpaper, statement murals and family portraits. Custom-printed to your exact specs.',
 };
-export default function SiteShellLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <SiteLayout>{children}</SiteLayout>;
+
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
